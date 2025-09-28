@@ -16,3 +16,14 @@ python -m venv .venv
 pip install -r requirements.txt  # se existir; caso contrário: pip install "Django==4.2.*" flake8
 python manage.py migrate
 python manage.py runserver
+
+## Screenshots
+Aplicação:
+![Home](docs/screenshots/01-home.png)
+![Dish list](docs/screenshots/02-dish-list.png)
+![Dish detail](docs/screenshots/03-dish-detail.png)
+
+Admin:
+![Login](docs/screenshots/06-admin-login.png)
+![Dish change](docs/screenshots/07-admin-dish-change.png)
+![DishType list](docs/screenshots/08-admin-dishtype-list.png)
