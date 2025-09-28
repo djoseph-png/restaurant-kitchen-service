@@ -1,0 +1,14 @@
+<form class="row g-2 mb-3" method="get">
+  <div class="col-auto">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Buscar..."
+      name="q"
+      value="{{ request.GET.q }}"
+    />
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-outline-secondary">Filtrar</button>
+  </div>
+</form>

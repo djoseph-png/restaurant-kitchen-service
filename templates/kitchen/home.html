@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Home · Kitchen{% endblock %}
+{% block content %}
+  <h3 class="mb-3">Dashboard</h3>
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="card"><div class="card-body">
+        <div class="h5">Pratos</div>
+        <div class="display-6">{{ dish_count }}</div>
+      </div></div>
+    </div>
+    <div class="col-md-4">
+      <div class="card"><div class="card-body">
+        <div class="h5">Tipos</div>
+        <div class="display-6">{{ type_count }}</div>
+      </div></div>
+    </div>
+    <div class="col-md-4">
+      <div class="card"><div class="card-body">
+        <div class="h5">Cozinheiros</div>
+        <div class="display-6">{{ cook_count }}</div>
+      </div></div>
+    </div>
+  </div>
+
+  <h5 class="mt-4">Tipos mais usados</h5>
+  <ul class="list-group">
+    {% for t in top_types %}
+      <li class="list-group-item d-flex justify-content-between">
+        <span>{{ t.name }}</span>
+        <span class="badge text-bg-secondary">{{ t.total }}</span>
+      </li>
+    {% empty %}
+      <li class="list-group-item">Sem dados.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

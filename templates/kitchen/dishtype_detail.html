@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ dishtype.name }} · Tipo{% endblock %}
+{% block content %}
+  <h3 class="mb-1">{{ dishtype.name }}</h3>
+  <p>{{ dishtype.description|default:"Sem descrição." }}</p>
+
+  <h6 class="mt-3">Pratos deste tipo</h6>
+  <ul class="list-group">
+    {% for d in dishtype.dishes.all %}
+      <li class="list-group-item">
+        <a href="{% url 'kitchen:dish-detail' d.pk %}">{{ d.name }}</a>
+      </li>
+    {% empty %}
+      <li class="list-group-item">Nenhum.</li>
+    {% endfor %}
+  </ul>
+
+  {% if user.is_authenticated %}
+    <div class="mt-4 d-flex gap-2">
+      <a class="btn btn-secondary"
+         href="{% url 'kitchen:dishtype-update' dishtype.pk %}">Editar</a>
+      <a class="btn btn-outline-danger"
+         href="{% url 'kitchen:dishtype-delete' dishtype.pk %}">Excluir</a>
+    </div>
+  {% endif %}
+{% endblock %}

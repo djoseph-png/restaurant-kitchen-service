@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}{{ dish.name }} · Prato{% endblock %}
+{% block content %}
+  <h3 class="mb-1">{{ dish.name }}</h3>
+  <div class="text-muted mb-3">
+    Tipo: {{ dish.dish_type.name }} ·
+    Preço: R$ {{ dish.price }}
+  </div>
+  <p>{{ dish.description|default:"Sem descrição." }}</p>
+
+  <h5 class="mt-4">Cozinheiros atribuídos ({{ dish.cooks.count }})</h5>
+  <ul class="list-group mb-3">
+    {% for c in dish.cooks.all %}
+      <li class="list-group-item">
+        {{ c.first_name }} {{ c.last_name }}
+      </li>
+    {% empty %}
+      <li class="list-group-item">Nenhum.</li>
+    {% endfor %}
+  </ul>
+
+  {% if user.is_authenticated %}
+    <h6>Atribuir/Remover cozinheiros</h6>
+    <div class="row row-cols-1 row-cols-md-2 g-2">
+      {% for c in all_cooks %}
+        <div class="col">
+          <form method="post" action="{% url 'kitchen:dish-toggle-cook' dish.pk %}">
+            {% csrf_token %}
+            <input type="hidden" name="cook_id" value="{{ c.pk }}" />
+            <button class="btn btn-sm
+                    {% if c in dish.cooks.all %}btn-outline-danger{% else %}btn-outline-success{% endif %}">
+              {% if c in dish.cooks.all %}Remover{% else %}Atribuir{% endif %}
+            </button>
+            <span class="ms-2">{{ c.first_name }} {{ c.last_name }}</span>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="mt-4 d-flex gap-2">
+      <a class="btn btn-secondary" href="{% url 'kitchen:dish-update' dish.pk %}">
+        Editar
+      </a>
+      <a class="btn btn-outline-danger" href="{% url 'kitchen:dish-delete' dish.pk %}">
+        Excluir
+      </a>
+    </div>
+  {% endif %}
+{% endblock %}
