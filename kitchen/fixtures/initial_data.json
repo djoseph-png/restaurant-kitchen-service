@@ -1,0 +1,125 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1001,
+    "fields": {
+      "password": "",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "anna",
+      "first_name": "Anna",
+      "last_name": "Souza",
+      "email": "anna@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-01T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1002,
+    "fields": {
+      "password": "",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "bruno",
+      "first_name": "Bruno",
+      "last_name": "Lima",
+      "email": "bruno@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-02T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1003,
+    "fields": {
+      "password": "",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "carla",
+      "first_name": "Carla",
+      "last_name": "Mendes",
+      "email": "carla@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-03T00:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+
+  { "model": "kitchen.dishtype", "pk": 1, "fields": { "name": "Entrada", "description": "Pratos leves para começar" } },
+  { "model": "kitchen.dishtype", "pk": 2, "fields": { "name": "Principal", "description": "Prato principal" } },
+  { "model": "kitchen.dishtype", "pk": 3, "fields": { "name": "Sobremesa", "description": "Doces e afins" } },
+
+  {
+    "model": "kitchen.cook",
+    "pk": 2001,
+    "fields": {
+      "user": 1001,
+      "first_name": "Anna",
+      "last_name": "Souza",
+      "years_of_experience": 4
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 2002,
+    "fields": {
+      "user": 1002,
+      "first_name": "Bruno",
+      "last_name": "Lima",
+      "years_of_experience": 7
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 2003,
+    "fields": {
+      "user": 1003,
+      "first_name": "Carla",
+      "last_name": "Mendes",
+      "years_of_experience": 2
+    }
+  },
+
+  {
+    "model": "kitchen.dish",
+    "pk": 3001,
+    "fields": {
+      "name": "Bruschetta",
+      "dish_type": 1,
+      "description": "Pão italiano com tomate e manjericão",
+      "price": "24.90",
+      "cooks": [2001]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 3002,
+    "fields": {
+      "name": "Risoto de Cogumelos",
+      "dish_type": 2,
+      "description": "Risoto cremoso com mix de cogumelos",
+      "price": "54.00",
+      "cooks": [2002, 2003]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 3003,
+    "fields": {
+      "name": "Pudim de Leite",
+      "dish_type": 3,
+      "description": "Tradicional pudim caramelizado",
+      "price": "18.00",
+      "cooks": [2003]
+    }
+  }
+]

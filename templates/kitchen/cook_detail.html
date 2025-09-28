@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ cook.first_name }} {{ cook.last_name }} · Cook{% endblock %}
+{% block content %}
+  <h3 class="mb-1">{{ cook.first_name }} {{ cook.last_name }}</h3>
+  <div class="text-muted mb-3">
+    Experiência: {{ cook.years_of_experience }} ano(s)
+  </div>
+
+  <h6>Pratos do cozinheiro</h6>
+  <ul class="list-group">
+    {% for d in cook.dishes.all %}
+      <li class="list-group-item">
+        <a href="{% url 'kitchen:dish-detail' d.pk %}">{{ d.name }}</a>
+      </li>
+    {% empty %}
+      <li class="list-group-item">Nenhum.</li>
+    {% endfor %}
+  </ul>
+
+  {% if user.is_authenticated %}
+    <div class="mt-4 d-flex gap-2">
+      <a class="btn btn-secondary"
+         href="{% url 'kitchen:cook-update' cook.pk %}">Editar</a>
+      <a class="btn btn-outline-danger"
+         href="{% url 'kitchen:cook-delete' cook.pk %}">Excluir</a>
+    </div>
+  {% endif %}
+{% endblock %}

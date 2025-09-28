@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Form Prato{% endblock %}
+{% block content %}
+  <h3 class="mb-3">Prato</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary">Salvar</button>
+  </form>
+{% endblock %}
